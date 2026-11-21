@@ -1,8 +1,8 @@
 # konfirm-frontend
 
-The customer- and merchant-facing pages for [Konfirm](https://github.com/konfirm-HQ/konfirm-backend), a non-custodial payment processor on Stellar.
+The customer- and merchant-facing pages for [Konfirm](https://github.com/Konfirm-xyz/konfirm-backend), a non-custodial payment processor on Stellar.
 
-Sibling repos: [konfirm-backend](https://github.com/konfirm-HQ/konfirm-backend) (the API this app calls, now a pure JSON API with no page-serving of its own) and [konfirm-contracts](https://github.com/konfirm-HQ/konfirm-contracts) (Soroban contracts, not yet in the live request path).
+Sibling repos: [konfirm-backend](https://github.com/Konfirm-xyz/konfirm-backend) (the API this app calls, now a pure JSON API with no page-serving of its own) and [konfirm-contracts](https://github.com/Konfirm-xyz/konfirm-contracts) (Soroban contracts, not yet in the live request path).
 
 ## Pages
 
@@ -68,7 +68,7 @@ npm install
 BACKEND_URL=http://localhost:4001 npm run dev
 ```
 
-Requires [konfirm-backend](https://github.com/konfirm-HQ/konfirm-backend) running separately (see that repo's README) and [Freighter](https://www.freighter.app/), set to Testnet, for exercising checkout, cash-out, or get-test-usdc yourself.
+Requires [konfirm-backend](https://github.com/Konfirm-xyz/konfirm-backend) running separately (see that repo's README) and [Freighter](https://www.freighter.app/), set to Testnet, for exercising checkout, cash-out, or get-test-usdc yourself.
 
 | Variable | Required | Notes |
 |---|---|---|
