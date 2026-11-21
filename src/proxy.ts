@@ -17,7 +17,7 @@ import type { NextRequest } from "next/server";
 // end result as before this file existed.
 const ADMIN_COOKIE = "konfirm_admin_session";
 const MERCHANT_COOKIE = "konfirm_session";
-const MERCHANT_PROTECTED_PATHS = ["/new", "/activity", "/cashout", "/referrals"];
+const MERCHANT_PROTECTED_PATHS = ["/new", "/activity", "/cashout", "/referrals", "/links"];
 const MERCHANT_PROTECTED_PATH_SET = new Set(MERCHANT_PROTECTED_PATHS);
 
 export function proxy(request: NextRequest) {
@@ -45,5 +45,5 @@ export function proxy(request: NextRequest) {
 // MERCHANT_PROTECTED_PATHS by hand, which proxy()'s own matching logic
 // above still uses as the single source of truth for behavior.
 export const config = {
-  matcher: ["/admin/:path*", "/new", "/activity", "/cashout", "/referrals"],
+  matcher: ["/admin/:path*", "/new", "/activity", "/cashout", "/referrals", "/links"],
 };
