@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRequireAuth } from '@/lib/useAuth';
+
+interface Merchant {
+  name: string;
+}
 
 interface PaymentLink {
   id: string;
@@ -26,6 +31,11 @@ function formatDate(value: string): string {
 }
 
 export default function LinksPage() {
+  const { resolved } = useRequireAuth<Merchant>({
+    meEndpoint: '/auth/me',
+    loginPath: '/login',
+    select: (body) => (body as { merchant: Merchant }).merchant,
+  });
   const [links, setLinks] = useState<PaymentLink[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -56,9 +66,10 @@ export default function LinksPage() {
   }, []);
 
   useEffect(() => {
+    if (!resolved) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect -- setState only runs after the await inside loadLinks(), not synchronously in the effect
     void loadLinks();
-  }, [loadLinks]);
+  }, [loadLinks, resolved]);
 
   const handleCopy = useCallback(async (link: PaymentLink) => {
     setCopyErrorId(null);
@@ -115,6 +126,8 @@ export default function LinksPage() {
     },
     [],
   );
+
+  if (!resolved) return null;
 
   return (
     <div className="wrap">
